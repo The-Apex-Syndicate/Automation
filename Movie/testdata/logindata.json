@@ -1,0 +1,17 @@
+{
+  "validUser": {
+    "name": "John Doe",
+    "emailOrPhone": "john@example.com",
+    "password": "CorrectPass123!",
+    "dob": "1990-01-01"
+  },
+  "invalidUser": {
+    "name": "Wrong User",
+    "emailOrPhone": "wrong@example.com",
+    "password": "WrongPass!",
+    "dob": "2000-01-01"
+  },
+  "forgotUser": {
+    "re-password": "WrongPass!"
+  }
+}
