@@ -13,7 +13,7 @@ import { defineConfig, devices } from '@playwright/test';
  * @see https://playwright.dev/docs/test-configuration
  */
 export default defineConfig({
-  testDir: './Movie/tests/',
+  testDir: './Movie',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -37,7 +37,8 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      testMatch: /.*ui\/.*\.spec\.js$/,
+      use: { ...devices['Desktop Chrome'] }
     },
 
     // {
@@ -69,6 +70,18 @@ export default defineConfig({
     //   name: 'Google Chrome',
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     // },
+
+
+    // ✅ API tests, also sequential
+    {
+      name: 'api-tests',
+      testMatch: /.*api\/.*\.spec\.js$/,
+      use: {
+        browserName: 'chromium',
+      },
+      workers: 1,
+    }
+
   ],
 
   /* Run your local dev server before starting the tests */
